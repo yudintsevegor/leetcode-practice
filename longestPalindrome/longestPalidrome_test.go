@@ -1,11 +1,12 @@
 package longestPalindrome
 
 import (
+	"strings"
 	"testing"
 )
 
 func TestFunc(t *testing.T) {
-	// isPalindromeTest(t)
+	isPalindromeTest(t)
 	mainFuncTest(t)
 }
 
@@ -20,20 +21,24 @@ func mainFuncTest(t *testing.T) {
 	}
 }
 
-/*
 func isPalindromeTest(t *testing.T) {
 	// t.Skip("Egor fix it")
 	cases := getPalindromeCases()
 	for i, c := range cases {
 		splitted := strings.Split(c.Input, "")
-		res, _ := isPalindrome(splitted)
-		if res.Value != c.Expected {
-			t.Fatalf("[%v] Test failed for input %v. Expected: %v; Result: %v", i, c.Input, c.Expected, res.Value)
+		if ok := isPalindrome(splitted); !ok {
+			if "" != c.Expected {
+				t.Fatalf("[%v] Test failed for input %v. Not Palindrome", i, c.Input)
+			}
+			continue
+		}
+
+		res := strings.Join(splitted, "")
+		if res != c.Expected {
+			t.Fatalf("[%v] Test failed for input %v. Expected: %v; Result: %v", i, c.Input, c.Expected, res)
 		}
 	}
 }
-
-*/
 
 type Case struct {
 	Input    string
