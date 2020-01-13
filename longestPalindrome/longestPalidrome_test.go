@@ -1,12 +1,11 @@
 package longestPalindrome
 
 import (
-	"strings"
 	"testing"
 )
 
 func TestFunc(t *testing.T) {
-	isPalindromeTest(t)
+	// isPalindromeTest(t)
 	mainFuncTest(t)
 }
 
@@ -21,6 +20,7 @@ func mainFuncTest(t *testing.T) {
 	}
 }
 
+/*
 func isPalindromeTest(t *testing.T) {
 	// t.Skip("Egor fix it")
 	cases := getPalindromeCases()
@@ -32,6 +32,8 @@ func isPalindromeTest(t *testing.T) {
 		}
 	}
 }
+
+*/
 
 type Case struct {
 	Input    string

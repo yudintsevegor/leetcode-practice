@@ -20,60 +20,50 @@ func longestPalindrome(s string) string {
 		end    = length
 	)
 
-	maxElement := Palindrome{
-		Length: 1,
-		Value:  letters[0],
-	}
+	maxSlice := letters[:1]
+	maxLen := len(maxSlice)
 
 	for {
-		if start > length {
+		if start > length || maxLen > (length-start) {
 			break
 		}
 
-		if start == end || maxElement.Length > (end-start) {
+		if start == end || maxLen > (end-start) {
 			end = length
 			start++
 			continue
 		}
 
-		res, isOk := isPalindrome(letters[start : end+1])
+		slice := letters[start : end+1]
 		end--
+
+		isOk := isPalindrome(slice)
 		if !isOk {
 			continue
 		}
 
-		if res.Length > maxElement.Length {
-			maxElement = res
+		sliceLen := len(slice)
+
+		if sliceLen > maxLen {
+			maxSlice = slice
+			maxLen = sliceLen
 		}
 	}
 
-	return maxElement.Value
+	return strings.Join(maxSlice, "")
 }
 
-type Palindrome struct {
-	Length int
-	Value  string
-}
-
-func isPalindrome(in []string) (Palindrome, bool) {
+func isPalindrome(in []string) bool {
 	length := len(in) - 1
 	if length == 0 {
-		return Palindrome{
-			Length: 1,
-			Value:  in[0],
-		}, true
+		return true
 	}
 
 	for i := 0; i < length/2+1; i++ {
 		if in[i] != in[length-i] {
-			return Palindrome{}, false
+			return false
 		}
 	}
 
-	p := Palindrome{
-		Value:  strings.Join(in, ""),
-		Length: length + 1,
-	}
-
-	return p, true
+	return true
 }
