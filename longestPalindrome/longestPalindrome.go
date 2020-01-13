@@ -1,7 +1,6 @@
 package longestPalindrome
 
 import (
-	"sort"
 	"strings"
 )
 
@@ -21,47 +20,34 @@ func longestPalindrome(s string) string {
 		end    = length
 	)
 
-	results := make(Palindromes, 0)
-	results = append(results, Palindrome{
+	maxElement := Palindrome{
 		Length: 1,
 		Value:  letters[0],
-	})
+	}
 
 	for {
 		if start > length {
 			break
 		}
 
-		if start == end {
+		if start == end || maxElement.Length > (end-start) {
 			end = length
 			start++
 			continue
 		}
 
-		// log.Println(letters[start : end+1])
 		res, isOk := isPalindrome(letters[start : end+1])
 		end--
 		if !isOk {
 			continue
 		}
 
-		// log.Println(res.Value)
-		results = append(results, res)
-	}
-	if len(results) == 0 {
-		return ""
+		if res.Length > maxElement.Length {
+			maxElement = res
+		}
 	}
 
-	sort.Sort(results)
-	/* log.Println("INPUT: ", s)
-	for _, r := range results {
-		log.Println(r.Value, r.Length)
-	}
-
-	*/
-	// log.Println(len(results))
-
-	return results[0].Value
+	return maxElement.Value
 }
 
 type Palindrome struct {
@@ -79,7 +65,6 @@ func isPalindrome(in []string) (Palindrome, bool) {
 	}
 
 	for i := 0; i < length/2+1; i++ {
-		// log.Println("HERE", in[i], in[length-i])
 		if in[i] != in[length-i] {
 			return Palindrome{}, false
 		}
@@ -91,18 +76,4 @@ func isPalindrome(in []string) (Palindrome, bool) {
 	}
 
 	return p, true
-}
-
-type Palindromes []Palindrome
-
-func (p Palindromes) Len() int {
-	return len(p)
-}
-
-func (p Palindromes) Swap(i, j int) {
-	p[i], p[j] = p[j], p[i]
-}
-
-func (p Palindromes) Less(i, j int) bool {
-	return p[i].Length > p[j].Length
 }
