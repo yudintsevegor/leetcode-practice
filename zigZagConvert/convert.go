@@ -18,13 +18,11 @@ func convert(s string, numRows int) string {
 
 	isDownWalk := true
 	nextRow := 0
+
 	for i, letter := range letters {
-		ind, newCurrentRow, newDownWalk := getInd(isDownWalk, i, nextRow, numRows)
+		ind := getInd(&isDownWalk, &nextRow, i, numRows)
 		// log.Print(ind)
 		mapHelper[ind] = append(mapHelper[ind], letter)
-
-		nextRow = newCurrentRow
-		isDownWalk = newDownWalk
 	}
 
 	out := ""
@@ -34,29 +32,32 @@ func convert(s string, numRows int) string {
 	return out
 }
 
-func getInd(isDownWalk bool, currentInd, nextRow, rowsNumber int) (int, int, bool) {
+func getInd(isDownWalk *bool, nextRow *int, currentInd, rowsNumber int) int {
 	rowsMinusOne := rowsNumber - 1
 	if currentInd < rowsMinusOne {
-		nextRow++
-		return currentInd, nextRow, isDownWalk
+		*nextRow++
+		return currentInd
 	}
 
 	if currentInd%rowsMinusOne == 0 {
-		if isDownWalk {
-			nextRow--
-			return rowsNumber - 1, nextRow, !isDownWalk
+		isNewDownWalk := *isDownWalk
+		if isNewDownWalk {
+			*nextRow--
+			*isDownWalk = !isNewDownWalk
+			return rowsMinusOne
 		}
-		nextRow++
-		return 0, nextRow, !isDownWalk
+		*isDownWalk = !isNewDownWalk
+		*nextRow++
+		return 0
 	}
 
-	if isDownWalk {
-		nextRow++
-		return currentInd % rowsMinusOne, nextRow, isDownWalk
+	if *isDownWalk {
+		*nextRow++
+		return currentInd % rowsMinusOne
 	}
 
-	newInd := nextRow
-	nextRow--
+	newInd := *nextRow
+	*nextRow--
 
-	return newInd, nextRow, isDownWalk
+	return newInd
 }
