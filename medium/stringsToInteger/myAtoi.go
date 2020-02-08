@@ -7,6 +7,13 @@ import (
 )
 
 
+const (
+	plusSign = "+"
+	minusSign = "-"
+)
+
+var edge = math.Pow(2,31)
+
 func myAtoi(str string) int {
 	if len(str) == 0{
 		return 0
@@ -37,9 +44,6 @@ func myAtoi(str string) int {
 		return 0
 	}
 
-	plusSign := "+"
-	minusSign := "-"
-
 
 	if splitted[0] != plusSign && splitted[0] != minusSign{
 		delete(allowedSymbols, plusSign)
@@ -68,7 +72,7 @@ func myAtoi(str string) int {
 		return 0
 	}
 
-	edge := math.Pow(2,31)
+
 	if math.Abs(res) >=  edge{
 		if res < 0{
 			return -int(edge)
