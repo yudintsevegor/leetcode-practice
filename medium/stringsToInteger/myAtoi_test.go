@@ -38,5 +38,21 @@ func getCases() []Case {
 			Input:    "-91283472332",
 			Expected: -2147483648,
 		},
+		{
+			Input:    "2147483648",
+			Expected: 2147483647,
+		},
+		{
+			Input:    "20000000000000000000",
+			Expected: 2147483647,
+		},
+		{
+			Input:    "-5-",
+			Expected: -5,
+		},
+		{
+			Input:    "123-",
+			Expected: 123,
+		},
 	}
 }
