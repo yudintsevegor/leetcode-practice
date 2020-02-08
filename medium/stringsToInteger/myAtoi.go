@@ -11,7 +11,6 @@ const (
 	plusSign = "+"
 	minusSign = "-"
 )
-
 var edge = math.Pow(2,31)
 
 func myAtoi(str string) int {
