@@ -4,7 +4,7 @@
 			<th>Task</th>
 			<th>Update</th>
 			<th>Runtime</th>
-			<th>Fasten Than (%)</th>
+			<th>Faster Than (%)</th>
 			<th>Memory</th>
 			<th>Less Than (%)</th>
 			<th>Language</th>
