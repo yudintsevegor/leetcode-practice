@@ -20,5 +20,14 @@
 			<td> 10 </td>
 			<td> golang </td>
 		</tr>
+		<tr>
+            <td> Regular Expression Matching </td>
+            <td> - </td>
+            <td> - </td>
+            <td> - ms </td>
+            <td> - MB </td>
+            <td> - </td>
+            <td> golang </td>
+        </tr>
 	</tbody>
 </table>
