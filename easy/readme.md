@@ -31,11 +31,11 @@
 		</tr>
 		<tr>
 			<td> Palindrome Number </td>
-			<td> - </td>
-			<td> - </td>
-			<td> - </td>
-			<td> - </td>
-			<td> - </td>
+			<td> 9.02.2020 </td>
+			<td> 8 ms </td>
+			<td> 95.14 </td>
+			<td> 5.2 MB </td>
+			<td> 62.50 </td>
 			<td> golang </td>
 		</tr>
 	</tbody>
