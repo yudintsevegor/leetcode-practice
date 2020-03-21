@@ -1,4 +1,4 @@
-package palindromeNumber
+package palindrome_number
 
 import "testing"
 
@@ -11,7 +11,7 @@ func TestFunc(t *testing.T) {
 	for i, c := range getCases() {
 		result := isPalindrome(c.Input)
 		if result != c.Expected {
-			t.Fatalf("[%d] Input: %v; Result: %v; Expected: %v;", i, c.Input, result, c.Expected, )
+			t.Fatalf("[%d] Input: %v; Result: %v; Expected: %v;", i, c.Input, result, c.Expected)
 		}
 	}
 }
@@ -32,4 +32,3 @@ func getCases() []Case {
 		},
 	}
 }
-

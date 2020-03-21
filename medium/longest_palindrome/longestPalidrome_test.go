@@ -1,4 +1,4 @@
-package longestPalindrome
+package longest_palindrome
 
 import (
 	"strings"

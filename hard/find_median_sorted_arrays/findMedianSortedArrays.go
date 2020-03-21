@@ -1,4 +1,4 @@
-package findMedianSortedArrays
+package find_median_sorted_arrays
 
 // with nice time but bad memory allocations
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {

@@ -1,4 +1,4 @@
-package stringsToInteger
+package strings_to_integer
 
 import "testing"
 

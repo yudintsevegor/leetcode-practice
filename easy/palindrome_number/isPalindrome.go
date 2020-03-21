@@ -1,4 +1,4 @@
-package palindromeNumber
+package palindrome_number
 
 var (
 	numbers            = make([]int, 0, 1)

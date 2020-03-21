@@ -1,4 +1,4 @@
-package zigZagConvert
+package zig_zag_convert
 
 import (
 	"strings"

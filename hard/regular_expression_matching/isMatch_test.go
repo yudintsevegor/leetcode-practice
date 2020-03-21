@@ -1,6 +1,8 @@
-package regularExpressionMatching
+package regular_expression_matching
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestFunc(t *testing.T) {
 	for i, c := range getCases() {
@@ -38,12 +40,32 @@ func getCases() []Case {
 		{
 			InputString:  "mississippi",
 			InputPattern: "mis*is*p*.",
+			Expected:     false,
+		},
+		{
+			InputString:  "ab",
+			InputPattern: ".*",
 			Expected:     true,
 		},
 		{
-			InputString:  "aa",
-			InputPattern: "a",
+			InputString:  "ab",
+			InputPattern: ".*c",
 			Expected:     false,
+		},
+		{
+			InputString:  "aaa",
+			InputPattern: ".*",
+			Expected:     true,
+		},
+		{
+			InputString:  "aaa",
+			InputPattern: "aaaa",
+			Expected:     false,
+		},
+		{
+			InputString:  "aaa",
+			InputPattern: "a*a",
+			Expected:     true,
 		},
 	}
 }
