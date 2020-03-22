@@ -12,7 +12,7 @@ func isMatch(s string, p string) bool {
 
 	if len(str) == 0 && len(pattern) == 0 {
 		return true
-	} else if !strings.Contains(p, "*") && !strings.Contains(p, "*") && len(str) != len(pattern) {
+	} else if !strings.Contains(p, "*") && !strings.Contains(p, ".") && len(str) != len(pattern) {
 		return false
 	}
 
@@ -25,11 +25,19 @@ func isMatch(s string, p string) bool {
 	for {
 		if sInd > len(str)-1 {
 			if pInd < len(pattern)-1 {
-				if pattern[pInd] != "*" {
-					result = append(result, pattern[pInd:]...)
+				log.Print(pattern)
+				tail := cutTail(pattern[pInd:])
+				pattern = pattern[:pInd]
+				pattern = append(pattern, tail...)
+				log.Print(pattern)
+				log.Print(pInd)
+				if len(result) == len(pattern) {
 					break
 				}
-				result = append(result, str[sInd-1])
+				theLastResInd := len(result) - 1
+				if pattern[pInd] != "*" || result[theLastResInd] != pattern[pInd+1] {
+					result = append(result, pattern[pInd:]...)
+				}
 			}
 			break
 		} else if pInd > len(pattern)-1 {
@@ -49,9 +57,7 @@ func isMatch(s string, p string) bool {
 			continue
 		case pattern[pInd] == "*":
 			previous := pattern[pInd-1]
-			if true {
-				// TODO
-			} else if previous == str[sInd] {
+			if previous == str[sInd] {
 				result = append(result, str[sInd])
 				sInd++
 				continue
@@ -70,4 +76,17 @@ func isMatch(s string, p string) bool {
 	log.Printf("input string: `%v`; input pattern: `%v`; result: `%v`", s, p, strings.Join(result, ""))
 
 	return reflect.DeepEqual(result, str)
+}
+
+func cutTail(tail []string) []string {
+	res := make([]string, 0, len(tail))
+	theLast := len(tail) - 1
+	for i, element := range tail {
+		if (i != 0 && element == "*") || (theLast > i && tail[i+1] == "*") {
+			continue
+		}
+		res = append(res, element)
+	}
+
+	return res
 }
