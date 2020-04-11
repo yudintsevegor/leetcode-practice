@@ -1,4 +1,4 @@
-package lengthOfLongestSubstring
+package integer_to_roman
 
 import (
 	"strings"
