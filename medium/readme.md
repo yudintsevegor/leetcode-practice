@@ -65,5 +65,14 @@
             <td> 46.67 </td>
             <td> golang </td>
         </tr>
+        <tr>
+            <td> Integer To Roman </td>
+            <td> 11.04.2020 </td>
+            <td> 8 ms </td>
+            <td> 71.86 </td>
+            <td> 3.6 MB </td>
+            <td> 50.00 </td>
+            <td> golang </td>
+        </tr>
 	</tbody>
 </table>
