@@ -8,19 +8,13 @@ func maxArea(heights []int) int {
 			continue
 		}
 
-		difference := 1
-		for internalInd := ind + 1; internalInd < len(heights); internalInd++ {
-			volume := difference * height
-			if volume < maxVolume {
-				difference++
-				continue
-			}
-
-			currentVolume := getMin(volume, heights[internalInd]*difference)
+		difference := len(heights) - 1 - ind
+		for internalInd := len(heights) - 1; internalInd > ind; internalInd-- {
+			currentVolume := getMin(height, heights[internalInd]) * difference
 			if maxVolume < currentVolume {
 				maxVolume = currentVolume
 			}
-			difference++
+			difference--
 		}
 	}
 
