@@ -74,5 +74,14 @@
             <td> 50.00 </td>
             <td> golang </td>
         </tr>
+        <tr>
+            <td> 3Sum </td>
+            <td> 25.11.2020 </td>
+            <td> 2764 ms </td>
+            <td> 5.26 </td>
+            <td> 8.6 MB </td>
+            <td> 18.14 </td>
+            <td> golang </td>
+        </tr>
 	</tbody>
 </table>
