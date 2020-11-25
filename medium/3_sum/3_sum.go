@@ -39,7 +39,7 @@ func threeSum(nums []int) [][]int {
 
 			k := -1
 			for searchedIND, ind := range indexes {
-				if ind <= j || ind <= i {
+				if ind <= j {
 					continue
 				}
 				k = ind
