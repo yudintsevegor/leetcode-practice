@@ -3,7 +3,6 @@ package __sum
 import (
 	"sort"
 	"strconv"
-	"strings"
 )
 
 func threeSum(nums []int) [][]int {
@@ -23,8 +22,7 @@ func threeSum(nums []int) [][]int {
 	mapNums := make(map[int][]int, len(nums)) // key-->value: num-->[]indexes
 	for i, num := range nums {
 		if v, ok := mapNums[num]; ok {
-			v = append(v, i)
-			mapNums[num] = v
+			mapNums[num] = append(v, i)
 			continue
 		}
 		mapNums[num] = []int{i}
@@ -53,16 +51,10 @@ func threeSum(nums []int) [][]int {
 				continue
 			}
 
-			if nums[i]+nums[j]+nums[k] != 0 {
-				continue
-			}
-
 			arr := []int{nums[i], nums[j], nums[k]}
 			sort.Ints(arr)
 
-			strArr := []string{strconv.Itoa(arr[0]), strconv.Itoa(arr[1]), strconv.Itoa(arr[2])}
-
-			key := strings.Join(strArr, ",")
+			key := strconv.Itoa(arr[0]) + strconv.Itoa(arr[1]) + strconv.Itoa(arr[2])
 			if uniq[key] == 0 {
 				uniq[key]++
 				out = append(out, arr)
